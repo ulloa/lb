@@ -2,18 +2,20 @@
 
 # Set your personal data here:
 rssfile="rss.xml"
-blogfile="2018.html"
-website="https://lukesmith.xyz/"
-indexfile="blogindex.html"
+blogfile="index.html"
+website="https://samuelulloa.com"
+indexfile="directory.html"
 stylesheet="..\/style.css" # Characters should be escaped for this variable.
-author="<a href=\"$website\">Luke Smith<\/a>"
+author="<a href=\"$website\">Samuel Ulloa<\/a>"
 dir=$(pwd)
 draftdir="$dir"/blog/.drafts
 blogdir="$dir"/blog
 
 # Set vi if $EDITOR not set
-if [ -z $EDITOR ];
-	then EDITOR="vi";
+if ! [[ -z $VISUAL ]];
+  then EDITOR=$VISUAL;
+elif [[ -z $EDITOR ]];
+  then EDITOR="vi";
 fi;
 
 # See other variables defined later, such as `header` and `webdate` for more customizability.
