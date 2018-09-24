@@ -58,7 +58,7 @@ finalize() { \
 	echo "AddDescription \"$title\" $chosen" >> "$blogdir"/.htaccess
 	rssdate=$(date '+%a, %d %b %Y %H:%M:%S %z')
 	webdate=$(date '+%a, %d %b %Y %H:%M:%S %z')
-	listformat='<li>'$(date '+%Y %b %d')' &ndash; <a href="$postsdir/'$url'.html">'$title'</a></li>'
+	listformat='<li>'$(date '+%Y %b %d')' &ndash; <a href="'$postsdir'/'$url'.html">'$title'</a></li>'
 	tmpdir=$(mktemp -d)
 	echo -e "\n<item>\n<title>$title</title>\n<guid>$website$blogfile#$url</guid>\n<pubDate>$rssdate</pubDate>\n<description><![CDATA[\n$(awk 'a==1;/^$/{a=1}' "$draftdir"/"$chosen")\n]]></description>\n</item>\n"> $tmpdir/rss.xml
 	echo -e "\n<div class=\"entry\">\n$(cat "$draftdir"/"$chosen")\n<small>$webdate</small>\n</div>\n" > $tmpdir/html.html
