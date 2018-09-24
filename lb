@@ -47,7 +47,7 @@ getTitle() { \
 
 postNew() { \
 	mkdir -p "$draftdir"
-	echo -e "<h2 id='$url'>$title</h2>\n<small>[<a href=\"$blogfile#$url\">link</a>&mdash;<a href=\"blog/$url.html\">standalone</a>]</small>\n\n<++>" >> "$draftdir"/$url.html && $EDITOR "$draftdir"/$url.html
+	echo -e "<h2 id='$url'>$title</h2>\n<small>[<a href=\"$blogfile#$url\">link</a>&mdash;<a href=\"$blogdir/$url.html\">standalone</a>]</small>\n\n<++>" >> "$draftdir"/$url.html && $EDITOR "$draftdir"/$url.html
 	}
 
 finalize() { \
@@ -77,7 +77,7 @@ delete() { \
 	[[ $choice =~ [Yy] ]] || exit
 	sed -i "/<item/{:a;N;/<\/item>/!ba};/$base/d" $rssfile && echo "Entry removed from RSS feed file."
 	sed -i "/<div/{:a;N;/<\/div>/!ba};/$base/d" $blogfile && echo "HTML code removed from blogfile."
-	sed -i "/<li>.*<a href=\"blog\/$base.html\">/d" $indexfile && echo "Index file entry removed."
+	sed -i "/<li>.*<a href=\"$blogdir\/$base.html\">/d" $indexfile && echo "Index file entry removed."
 	rm "$chosen" && echo "Blog post deleted from directories."
 	}
 
