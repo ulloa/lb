@@ -8,8 +8,8 @@ indexfile="directory.html"
 stylesheet="..\/style.css" # Characters should be escaped for this variable.
 author="<a href=\"$website\">Samuel Ulloa<\/a>"
 dir=$(pwd)
-draftdir="$dir"/blog/.drafts
-blogdir="$dir"/blog
+draftdir="$dir"/posts/.drafts
+blogdir="$dir"/posts
 
 # Set vi if $EDITOR not set
 if ! [[ -z $VISUAL ]];
@@ -24,7 +24,7 @@ getHelp() { \
 	echo -e "This system will take the blog entries you write and add them into the RSS file and HTML file of your choosing. Set which files to use by editing the 'lb' file directly and changing the variables at the top.\n"
 	echo -e "To fully prepare these files, add the following line to both files where you want the content to be added:\n"
 	echo -e "<!-- LB -->\n"
-	echo -e "Usage: 'new': create new draft; 'finalize': finish draft and add it to the RSS and HTML page; 'delete': delete a finished page.\n"
+	echo -e "Usage: 'new': create new draft; 'finalize': finish draft and add it to the RSS and HTML page; 'discard': delete a draft; 'delete': delete a finished page.\n"
 	echo -e "As you finalize posts, they will be appended in the appropriate format below that line.\n"
 	echo -e "Blog posts will be stored in 'blog/' and drafts will be in 'blog/.drafts/'. To delete drafts, you only need delete their .html files directly, but use the 'lb delete' command to remove finalized posts since they appear in three places."
 }
